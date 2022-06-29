@@ -14,7 +14,6 @@ def partition(lst, start, end):
     lst[i], lst[end] = lst[end], lst[i]
     return i
 
-@Utils.trace
 def quick_sort(lst, start, end):
     """将lst升序排列"""
     if start < end:
