@@ -1,5 +1,13 @@
+x = 0
+def outer():
+    x = 1
+    def inner():
+        global x
+        x = 2
+        print("inner:", x)
 
+    inner()
+    print("outer:", x)
 
-lst = [1,2,3]
-
-print(lst[2:1])
+outer()
+print("global:", x)

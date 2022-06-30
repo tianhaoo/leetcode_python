@@ -1,3 +1,5 @@
+from collections import deque
+
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -29,11 +31,37 @@ def convert_array_to_tree(lst, i, n):
     return root
 
 
-def traverse(root):
+def pre_order(root):
     if root is not None:
         print(root.val)
-        traverse(root.left)
-        traverse(root.right)
+        pre_order(root.left)
+        pre_order(root.right)
+
+def in_order(root):
+    if root is not None:
+        in_order(root.left)
+        print(root.val)
+        in_order(root.right)
+
+def post_order(root):
+    if root is not None:
+        post_order(root.left)
+        post_order(root.right)
+        print(root.val)
+
+def level_order(root):
+    q = deque()
+    q.append(root)
+    while q:
+        node = q.popleft()
+        print(node.val)
+        if node.left is not None:
+            q.append(node.left)
+        if node.right is not None:
+            q.append(node.right)
+
+
+
 
 
 if __name__ == '__main__':
@@ -41,6 +69,6 @@ if __name__ == '__main__':
 
     tree = convert_array_to_tree(lst, 0, len(lst)-1)
     print(tree)
-    traverse(tree)
+    level_order(tree)
 
 
