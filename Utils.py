@@ -61,6 +61,56 @@ def convert_tree_to_array(root):
 
 
 
+def serialize(root):
+    if root is None:
+        return str([])
+    lst = []
+    q = deque()
+    q.append(root)
+    while q:
+        for i in range(len(q)):
+            node = q.popleft()
+            if node:
+                lst.append(node.val)
+                q.append(node.left)
+                q.append(node.right)
+            else:
+                lst.append(None)
+    index = len(lst)
+    for i in range(len(lst)-1, -1, -1):
+        if lst[i] is not None:
+            index = i
+            break
+
+    return str(lst[:index+1])
+
+
+def deserialize(data):
+    data = data.replace("null", "None")
+    lst = eval(data)
+    if not lst:
+        return None
+    root = TreeNode(lst[0])
+    q = deque()
+    q.append(root)
+
+    i = 1
+    while q:
+        node = q.popleft()
+        if i >= len(lst):
+            break
+        if lst[i] is not None:
+            node.left = TreeNode(lst[i])
+            q.append(node.left)
+        i += 1
+        if i >= len(lst):
+            break
+        if lst[i] is not None:
+            node.right = TreeNode(lst[i])
+            q.append(node.right)
+        i += 1
+    return root
+
 
 
 def pre_order(root):

@@ -39,7 +39,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     lst = [1, 2, 3, 4, 5]
-    root = Utils.convert_array_to_tree(lst, 0, len(lst)-1)
+    root = Utils.convert_array_to_tree(lst, 0)
     # Utils.traverse(root)
     s = Solution()
     print(s.diameterOfBinaryTree(root))
