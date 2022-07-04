@@ -2,6 +2,14 @@ from collections import deque
 
 
 
+def trace(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print(f"{func.__name__}({args}, {kwargs}) -> {result}")
+        return result
+    return wrapper
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, val=None, left=None, right=None):
@@ -11,14 +19,6 @@ class TreeNode(object):
 
     def __str__(self):
         return f"{self.val} -> ({self.left},{self.right})"
-
-
-def trace(func):
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        print(f"{func.__name__}({args}, {kwargs}) -> {result}")
-        return result
-    return wrapper
 
 
 
@@ -61,7 +61,7 @@ def convert_tree_to_array(root):
 
 
 
-def serialize(root):
+def serialize_binary_tree(root):
     if root is None:
         return str([])
     lst = []
@@ -85,7 +85,7 @@ def serialize(root):
     return str(lst[:index+1])
 
 
-def deserialize(data):
+def deserialize_binary_tree(data):
     data = data.replace("null", "None")
     lst = eval(data)
     if not lst:
@@ -161,6 +161,42 @@ def print_binary_tree(root):
     for line in lines:
         print(f"| {line.center(100, ' ')} |")
 
+
+
+class ListNode:
+    def __init__(self, val=None, next=None):
+        self.val = val
+        self.next = next
+
+    def __str__(self):
+        return f"{self.val} -> {self.next}"
+
+
+def print_linked_list(lst):
+    p = lst
+    while p:
+        print(p.val, end=" ")
+        p = p.next
+    print()
+
+
+def serialize_linked_list(lst):
+    res = []
+    p = lst
+    while p:
+        res.append(p.val)
+        p = p.next
+    return res
+
+def deserialize_linked_list(lst):
+    if not lst:
+        return None
+    root = ListNode(lst[0])
+    p = root
+    for val in lst[1:]:
+        p.next = ListNode(val)
+        p = p.next
+    return root
 
 
 

@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # lst = [3,9,20,None,None,15,7]
     s = "[1,2,3,4,5]"
 
-    root = Utils.deserialize(s)
+    root = Utils.deserialize_binary_tree(s)
     print_binary_tree(root)
 
     s = Solution()

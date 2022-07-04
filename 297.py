@@ -91,7 +91,7 @@ if __name__ == '__main__':
     # lst = [1, 2, 3, None, None, 4, 5]
     # lst = []
     print(s)
-    root = Utils.deserialize(s)
+    root = Utils.deserialize_binary_tree(s)
     Utils.print_binary_tree(root)
 
     b = Utils.serialize(root)
