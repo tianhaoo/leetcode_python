@@ -10,3 +10,6 @@ print(heapq.nlargest(3, lst))
 
 
 q = queue.PriorityQueue()
+
+print(2**1000)
+print(sum(map(int, str(2**1000))))

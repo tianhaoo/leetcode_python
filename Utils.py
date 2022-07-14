@@ -3,6 +3,7 @@ from collections import deque
 
 
 def trace(func):
+    """作为递归函数的装饰器，打印每次调用的参数和返回值"""
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         print(f"{func.__name__}({args}, {kwargs}) -> {result}")
@@ -24,6 +25,7 @@ class TreeNode(object):
 
 
 def convert_array_to_tree(lst, i):
+    """把数组表示的tree转成TreeNode"""
     root = None
     if i >= len(lst):
         return root
@@ -36,6 +38,7 @@ def convert_array_to_tree(lst, i):
     return root
 
 def convert_tree_to_array(root):
+    """把二叉树转为数组表示，满二叉树"""
     # 求最大深度
     def maxDepth(root):
         def traverse(root):
