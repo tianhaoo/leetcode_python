@@ -13,3 +13,8 @@ q = queue.PriorityQueue()
 
 print(2**1000)
 print(sum(map(int, str(2**1000))))
+
+
+print(ord("C"))
+print(ord("c"))
+print(ord("casdf"))
